@@ -1,27 +1,35 @@
 #include <stdio.h>
 
 int main() {
-    int i, j, n, x, insert;
+    int i, n, check = 0;
 
     scanf("%d", &n);
-
     int arr[n];
+    for (i = 0; i < n; i++) {
+        arr[i] = 0;
+    }
 
-    scanf("%d", &x);
-    for (i = 0; i < x; i++) {
-        scanf("%d", &insert);
-        arr[insert] = insert;
+    scanf("%d", &n);
+    int arrX[n];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arrX[i]);
+        arr[arrX[i] - 1] = arrX[i];
     }
-    scanf("%d", &x);
-    for (i = 0; i < x; i++) {
-        scanf("%d", &insert);
-        arr[insert] = insert;
+    
+    scanf("%d", &n);
+    int arrY[n];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arrY[i]);
+        arr[arrY[i] - 1] = arrY[i];
     }
-    for (i = 1; i <= n; i++) {
-        if (arr[i - 1] != i) {
-            printf("Oh, my keyboard!");
-            return 0;
-        }
+
+    for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++) {
+        if (arr[i] != i + 1) check = 1;
     }
-    printf("I become the guy.");
+
+    if (check == 1) {
+        printf("Oh, my keyboard!");
+    } else {
+        printf("I become the guy.");
+    }
 }
